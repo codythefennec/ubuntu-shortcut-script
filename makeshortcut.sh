@@ -1,17 +1,38 @@
 #!/bin/bash
 #remove to make it a shell script
 function makeshortcut {
+	# fetch init dir
+	initDir="$(pwd)"
+
+	# fetch the executable from the submitted file
+	execCode="$(sudo readlink -f "$1")"
+	
+	echo "Executable: $execCode"
+
+	# fetching the icon from submit
+	icon="$(sudo readlink -f "$2")"
+	
+	echo "Icon: $icon"
+
 	#get the file to make it for
 	newShortcut="${1%%.*}"
 	#append .desktop to make it valid
 	newShortcut+=".desktop"
-	
+
 	# using code from online
 	# https://askubuntu.com/questions/64222/how-can-i-create-launchers-on-my-desktop
 	# add the info to the new file
 
+	#change dir
+	echo "Moving to ~/Scripts"
+
+	user=$(whoami)
+	cd //home/$user/Scripts	
+
 	#create the new file	
-	sudo /bin/bash -c '"echo #!/usr/bin/env xdg-open" > "${newShortcut}"'
+	echo "#!/usr/bin/env xdg-open" >> "${newShortcut}"
+
+	ls "~/Scripts"
 	#append the rest
 	echo "" >> "${newShortcut}"
 	echo "[Desktop Entry]" >> "${newShortcut}"
@@ -20,9 +41,6 @@ function makeshortcut {
 	echo "Terminal=false" >> "${newShortcut}"
 	
 	# insert execution code
-	# fetch the executable from the submitted file
-	
-	execCode="$(readlink -f "$1")"
 
 	echo "Exec=$execCode" >> "${newShortcut}"
 	name="${1%%.*}"
@@ -30,9 +48,6 @@ function makeshortcut {
 	echo "Name=$name" >> "${newShortcut}"
 	echo "Comment=Comment Here" >> "${newShortcut}"
 
-	# fetching the icon from submit
-	icon="$(readlink -f "$2")"
-	
 	echo "Icon=$icon" >> "${newShortcut}"
 
 	chmod +x "${newShortcut}"
@@ -43,4 +58,8 @@ function makeshortcut {
 	echo "Moving shortcut to desktop!"
 
 	mv "${newShortcut}" ~/Desktop/
+
+	echo "Moving back to where you were"
+	
+	cd "$initDir"
 }
