@@ -1,6 +1,6 @@
 #!/bin/bash
 #remove to make it a shell script
-#function makeshortcut {
+function makeshortcut {
 	#get the file to make it for
 	newShortcut="${1%%.*}"
 	#append .desktop to make it valid
@@ -22,8 +22,7 @@
 	# insert execution code
 	# fetch the executable from the submitted file
 	
-	execCode="."
-	execCode+="$(readlink -f "$1")"
+	execCode="$(readlink -f "$1")"
 
 	echo "Exec=$execCode" >> "${newShortcut}"
 	name="${1%%.*}"
@@ -40,4 +39,8 @@
 
 	# completed
 	# moving to desktop..
-#}
+
+	echo "Moving shortcut to desktop!"
+
+	mv "${newShortcut}" ~/Desktop/
+}
