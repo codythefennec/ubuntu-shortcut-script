@@ -6,7 +6,17 @@ First install the repo with:
 
 ``git clone https://github.com/codythefennec/ubuntu-shortcut-script.git``
 
-Enter that directory and execute the installscript:
+Enter that directory and make the scripts executable using:
+
+chmod +x installscripts.sh
+
+and:
+
+chmod +x makeshortcut.sh
+
+Note these functions just make the file executable, if you want to verify integrity please read over the code within the scripts!
+
+Then simply run:
 
 ``./installscripts.sh``
 
