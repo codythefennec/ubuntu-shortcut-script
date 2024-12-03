@@ -10,17 +10,14 @@ Enter that directory and make the scripts executable using:
 
 chmod +x installscripts.sh
 
-and:
-
-chmod +x makeshortcut.sh
-
-Note these functions just make the file executable, if you want to verify integrity please read over the code within the scripts!
+Note theis command just makes the file executable, if you want to verify integrity please read over the code within the scripts!
 
 Then simply run:
 
 ``./installscripts.sh``
 
 This will:
+ - Make the shortcut script executable
  - Create Scripts folder in home dir
  - Move the shortcut script to the new scripts folder
  - Add a link to the script in your .bashrc file
