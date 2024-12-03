@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo "Making makeshortcut.sh executable.."
+
+chmod +x makeshortcut.sh
+
 if [ -d "~/Scripts/" ]; then
 	echo "Scripts folder exists.."
 else
