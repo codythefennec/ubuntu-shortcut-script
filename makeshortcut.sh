@@ -11,7 +11,7 @@ function makeshortcut {
 	# add the info to the new file
 
 	#create the new file	
-	sudo /bin/sh -c '"echo #!/usr/bin/env xdg-open" > "${newShortcut}"'
+	sudo /bin/bash -c '"echo #!/usr/bin/env xdg-open" > "${newShortcut}"'
 	#append the rest
 	echo "" >> "${newShortcut}"
 	echo "[Desktop Entry]" >> "${newShortcut}"
