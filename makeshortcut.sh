@@ -32,7 +32,6 @@ function makeshortcut {
 	#create the new file	
 	echo "#!/usr/bin/env xdg-open" >> "${newShortcut}"
 
-	ls "~/Scripts"
 	#append the rest
 	echo "" >> "${newShortcut}"
 	echo "[Desktop Entry]" >> "${newShortcut}"
